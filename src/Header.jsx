@@ -1,17 +1,20 @@
-// Um componente é uma função que retorna JSX
+import { useSelector } from "react-redux";
+
 function Header() {
- return (
- <header style={{
- backgroundColor: '#282c34',
- padding: '20px',
- color: 'white',
- textAlign: 'center',
- fontSize: 'calc(10px + 2vmin)'
- }}>
- <h1>Meu Incrível App React!</h1>
- <p>Bem-vindo à Aula 2: Componentes e Props</p>
- </header>
- );
+  const quantidade = useSelector((state) => state.cart.items.length);
+
+  return (
+    <header className="header">
+      {" "}
+      <div className="logo">
+        {" "}
+        <h1>⚡ Cofre Nerd</h1> <p>Seu cofre de colecionáveis Pokémon!</p>{" "}
+      </div>
+      <div className="carrinho-header">
+        🛒 <span>{quantidade}</span> item(s)
+      </div>
+    </header>
+  );
 }
-// Precisamos exportar o componente para poder usá-lo em outros lugares
+
 export default Header;
